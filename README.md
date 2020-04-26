@@ -83,7 +83,7 @@ Eg: `curl ... | NVM_DIR="path/to/nvm"`. Ensure that the `NVM_DIR` does not conta
 
 #### Troubleshooting on Linux
 
-On Linux, after running the install script, if you get `nvm: command not found` or see no feedback from your terminal after you type `command -v nvm`, simply close your current terminal, open a new terminal, and try verifying again.
+On Linux, after running the install script, if you get `nvm: command not found` or see no feedback from your terminal after you type `command -v nvm`, simply close your current terminal, open a new terminal, and try verifying again. Alternatively, you can run `source ~/.bashrc` at the command line, and it should pick up the `nvm` command. Substitute the name of the Shell profile, depending on the type of shell in use.
 
 #### Troubleshooting on macOS
 
