@@ -85,7 +85,7 @@ Eg: `curl ... | NVM_DIR="path/to/nvm"`. Ensure that the `NVM_DIR` does not conta
 
 #### Troubleshooting on Linux
 
-On Linux, after running the install script, if you get `nvm: command not found` or see no feedback from your terminal after you type `command -v nvm`, simply close your current terminal, open a new terminal, and try verifying again. Alternatively, you can run `source ~/.bashrc` at the command line, and it should pick up the `nvm` command. Substitute the name of the Shell profile, depending on the type of shell in use.
+On Linux, after running the install script, if you get `nvm: command not found` or see no feedback from your terminal after you type `command -v nvm`, simply close your current terminal, open a new terminal, and try verifying again. Alternatively, you can run `source ~/.bashrc` at the command line, and it should pick up the `nvm` command. More generally, the command is  `source ~/<your_profile_file>`.
 
 #### Troubleshooting on macOS
 
@@ -93,9 +93,9 @@ Since OS X 10.9, `/usr/bin/git` has been preset by Xcode command line tools, whi
 
 If you get `nvm: command not found` after running the install script, one of the following might be the reason:
 
-  - Your system may not have a `.bash_profile` file where the command is set up. Create one with `touch ~/.bash_profile` and run the install script again
+  - Your system may not have a `.bash_profile` file where the command is set up. Create one with `touch ~/.bash_profile` and run the install script again. Then, run `source ~/.bash_profile` to pick up the `nvm` command.
 
-  - You might need to restart your terminal instance. Try opening a new tab/window in your terminal and retry.
+  - If the above didn't help, you might need to restart your terminal instance. Try opening a new tab/window in your terminal and retry.
 
 If the above doesn't fix the problem, you may try the following:
 
