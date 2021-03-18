@@ -405,6 +405,12 @@ nvm_do_install() {
     if nvm_profile_is_bash_or_zsh "${NVM_PROFILE-}"; then
       BASH_OR_ZSH=true
     fi
+    if ${BASH_OR_ZSH} && ! command grep -qc '$NVM_DIR/.nvm' "$NVM_PROFILE"; then
+      echo "=> Appending nvm path to $NVM_PROFILE"
+      command printf "${SOURCE_STR}" >> "$NVM_PROFILE"
+    else 
+      echo "=> nvm path already in ${NVM_PROFILE}"
+    fi
     if ! command grep -qc '/nvm.sh' "$NVM_PROFILE"; then
       echo "=> Appending nvm source string to $NVM_PROFILE"
       command printf "${SOURCE_STR}" >> "$NVM_PROFILE"
