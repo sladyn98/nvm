@@ -1796,6 +1796,13 @@ nvm_get_arch() {
     aarch64) NVM_ARCH="arm64" ;;
     *) NVM_ARCH="${HOST_ARCH}" ;;
   esac
+  
+  #If running a 64bit ARM kernel but a 32bit ARM userland
+  #change NVM_ARCH to 32bit ARM (armv7l)
+  if [ "$NVM_ARCH" == arm64 ] && file "$(readlink -f "/sbin/init")" | grep -q 32;then
+    NVM_ARCH=armv7l
+  fi
+  
   nvm_echo "${NVM_ARCH}"
 }
 
