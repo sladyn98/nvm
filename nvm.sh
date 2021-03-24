@@ -61,18 +61,18 @@ nvm_command_info() {
   local COMMAND
   local INFO
   COMMAND="${1}"
-  if nvm_has "${COMMAND}" | nvm_grep -q hashed; then
-    INFO="$(nvm_has "${COMMAND}" | command sed -E 's/\(|\)//g' | command awk '{print $4}')"
-  elif nvm_has "${COMMAND}" | nvm_grep -q aliased; then
+  if command type "${COMMAND}" | nvm_grep -q hashed; then
+    INFO="$(command type "${COMMAND}" | command sed -E 's/\(|\)//g' | command awk '{print $4}')"
+  elif command type "${COMMAND}" | nvm_grep -q aliased; then
     # shellcheck disable=SC2230
-    INFO="$(which "${COMMAND}") ($(nvm_has "${COMMAND}" | command awk '{ $1=$2=$3=$4="" ;print }' | command sed -e 's/^\ *//g' -Ee "s/\`|'//g"))"
-  elif nvm_has "${COMMAND}" | nvm_grep -q "^${COMMAND} is an alias for"; then
+    INFO="$(which "${COMMAND}") ($(command type "${COMMAND}" | command awk '{ $1=$2=$3=$4="" ;print }' | command sed -e 's/^\ *//g' -Ee "s/\`|'//g"))"
+  elif command type "${COMMAND}" | nvm_grep -q "^${COMMAND} is an alias for"; then
     # shellcheck disable=SC2230
-    INFO="$(which "${COMMAND}") ($(nvm_has "${COMMAND}" | command awk '{ $1=$2=$3=$4=$5="" ;print }' | command sed 's/^\ *//g'))"
-  elif nvm_has "${COMMAND}" | nvm_grep -q "^${COMMAND} is \\/"; then
-    INFO="$(nvm_has "${COMMAND}" | command awk '{print $3}')"
+    INFO="$(which "${COMMAND}") ($(command type "${COMMAND}" | command awk '{ $1=$2=$3=$4=$5="" ;print }' | command sed 's/^\ *//g'))"
+  elif command type "${COMMAND}" | nvm_grep -q "^${COMMAND} is \\/"; then
+    INFO="$(command type "${COMMAND}" | command awk '{print $3}')"
   else
-    INFO="$(nvm_has "${COMMAND}")"
+    INFO="$(command type "${COMMAND}")"
   fi
   nvm_echo "${INFO}"
 }
