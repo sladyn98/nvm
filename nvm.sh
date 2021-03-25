@@ -45,7 +45,7 @@ nvm_grep() {
 }
 
 nvm_has() {
-  command type "${1-}" >/dev/null 2>&1
+  type "${1-}" >/dev/null 2>&1  
 }
 
 nvm_has_non_aliased() {
