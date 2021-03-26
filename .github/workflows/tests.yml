@@ -45,7 +45,6 @@ jobs:
           skip-ls-check: true
           shell-command: echo installed
       - run: npm ls urchin
-      - run: sudo bash
       - run: URCHIN="$(npm bin)/urchin" sudo make test-${{ matrix.shell }} 
         env:
           TEST_SUITE: ${{ matrix.suite }}
