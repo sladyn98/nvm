@@ -46,7 +46,7 @@ jobs:
           shell-command: echo installed
       - run: npm ls urchin
       - run: env
-      - run: export SHELL="${{ matrix.shell }}" URCHIN="$(npm bin)/urchin" sudo make test-${{ matrix.shell }} 
+      - run: sudo export SHELL="${{ matrix.shell }}" URCHIN="$(npm bin)/urchin" sudo make test-${{ matrix.shell }} 
         env:
           TEST_SUITE: ${{ matrix.suite }}
 
