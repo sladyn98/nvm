@@ -14,8 +14,8 @@ jobs:
       matrix:
         shell:
           - bash
-          # - sh
-          # - dash
+          - sh
+          - dash
         suite:
           - fast
           # - sourcing
@@ -45,6 +45,7 @@ jobs:
           skip-ls-check: true
           shell-command: echo installed
       - run: npm ls urchin
+      - run: env
       - run: URCHIN="$(npm bin)/urchin" sudo make test-${{ matrix.shell }} 
         env:
           TEST_SUITE: ${{ matrix.suite }}
