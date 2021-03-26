@@ -45,9 +45,8 @@ jobs:
           skip-ls-check: true
           shell-command: echo installed
       - run: npm ls urchin
-      - run: echo $SHELL
-      - run: echo $(npm bin)/urchin
       - run: bash
+      - run: export TERMINFO=/usr/lib/terminfo
       - run: sudo make test-${{ matrix.shell }} URCHIN="$(npm bin)/urchin"
         env:
           TEST_SUITE: ${{ matrix.suite }}
