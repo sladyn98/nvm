@@ -23,10 +23,18 @@ die () { echo "$@" '$NVM_DETECT_PROFILE:' "$NVM_DETECT_PROFILE"; cleanup; exit 1
 setup
 
 # check if nvm_path already exists in bashrc
-
 NVM_DETECT_PROFILE="$(BASH_VERSION="1"; unset PROFILE; nvm_detect_profile)"
 echo "export NVM_DIR="$HOME/.nvm"" > $HOME/.bashrc
-OUTPUT = "$(nvm_do_install)
+OUTPUT = "$(nvm_do_install)"
+EXPECTED_OUTPUT='nvm path already in ${NVM_PROFILE}'
+if [ "${OUTPUT#*$EXPECTED_OUTPUT}" = "${OUTPUT}" ]; then
+  die "Path already exists in the profile, so should have returned >${EXPECTED_OUTPUT}<. Instead it returned >${OUTPUT}<"
+fi
+
+# .zshrc should be detected for zsh
+NVM_DETECT_PROFILE="$(ZSH_VERSION="1"; unset PROFILE; unset BASH_VERSION; nvm_detect_profile)"
+echo "export NVM_DIR="$HOME/.nvm"" > $HOME/.zshrc
+OUTPUT = "$(nvm_do_install)"
 EXPECTED_OUTPUT='nvm path already in ${NVM_PROFILE}'
 if [ "${OUTPUT#*$EXPECTED_OUTPUT}" = "${OUTPUT}" ]; then
   die "Path already exists in the profile, so should have returned >${EXPECTED_OUTPUT}<. Instead it returned >${OUTPUT}<"
