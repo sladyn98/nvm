@@ -26,7 +26,7 @@ setup
 NVM_DETECT_PROFILE="$(BASH_VERSION="1"; unset PROFILE; nvm_detect_profile)"
 echo "export NVM_DIR="$HOME/.nvm"" > $HOME/.bashrc
 OUTPUT = "$(nvm_do_install)"
-EXPECTED_OUTPUT='nvm path already in ${NVM_PROFILE}'
+EXPECTED_OUTPUT='nvm source string already in ${NVM_PROFILE}'
 if [ "${OUTPUT#*$EXPECTED_OUTPUT}" = "${OUTPUT}" ]; then
   die "Path already exists in the profile, so should have returned >${EXPECTED_OUTPUT}<. Instead it returned >${OUTPUT}<"
 fi
@@ -35,7 +35,7 @@ fi
 NVM_DETECT_PROFILE="$(ZSH_VERSION="1"; unset PROFILE; unset BASH_VERSION; nvm_detect_profile)"
 echo "export NVM_DIR="$HOME/.nvm"" > $HOME/.zshrc
 OUTPUT = "$(nvm_do_install)"
-EXPECTED_OUTPUT='nvm path already in ${NVM_PROFILE}'
+EXPECTED_OUTPUT='nvm source string already in ${NVM_PROFILE}'
 if [ "${OUTPUT#*$EXPECTED_OUTPUT}" = "${OUTPUT}" ]; then
   die "Path already exists in the profile, so should have returned >${EXPECTED_OUTPUT}<. Instead it returned >${OUTPUT}<"
 fi
