@@ -72,7 +72,7 @@ nvm_command_info() {
   elif command type "${COMMAND}" | nvm_grep -q "^${COMMAND} is \\/"; then
     INFO="$(command type "${COMMAND}" | command awk '{print $3}')"
   else
-    INFO="$( type/ "${COMMAND}")"
+    INFO="$( \type "${COMMAND}")"
   fi
   nvm_echo "${INFO}"
 }
