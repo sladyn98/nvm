@@ -70,7 +70,7 @@ nvm_command_info() {
     # shellcheck disable=SC2230
     INFO="$(which "${COMMAND}") ($(command type "${COMMAND}" | command awk '{ $1=$2=$3=$4=$5="" ;print }' | command sed 's/^\ *//g'))"
   elif command type "${COMMAND}" | nvm_grep -q "^${COMMAND} is \\/"; then
-    INFO="$(command type "${COMMAND}" | command awk '{print $3}')"
+    INFO="$(\type "${COMMAND}" | command awk '{print $3}')"
   else
     INFO="$(\type "${COMMAND}")"
   fi
