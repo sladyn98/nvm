@@ -45,7 +45,7 @@ nvm_grep() {
 }
 
 nvm_has() {
-  type "${1-}" >/dev/null 2>&1  
+  \type "${1-}" >/dev/null 2>&1
 }
 
 nvm_has_non_aliased() {
@@ -72,7 +72,7 @@ nvm_command_info() {
   elif command type "${COMMAND}" | nvm_grep -q "^${COMMAND} is \\/"; then
     INFO="$(command type "${COMMAND}" | command awk '{print $3}')"
   else
-    INFO="$( \type "${COMMAND}")"
+    INFO="$(\type "${COMMAND}")"
   fi
   nvm_echo "${INFO}"
 }
