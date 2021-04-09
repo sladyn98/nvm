@@ -46,7 +46,7 @@ WGET_EXPECTED_INFO="$(type wget)"
 cleanup
 
 # 4. nvm_command_info() should not have standard error
-OUTPUT="$(nvm_command_info ls   2>&1 >/dev/null)"
+OUTPUT="$(nvm_command_info wget   2>&1 >/dev/null)"
 [ -z "${OUTPUT}" ] || die "\`nvm_command_info ls\`   expected no stderr; got >${OUTPUT}< (stage 4)"
 OUTPUT="$(nvm_command_info rm   2>&1 >/dev/null)"
 [ -z "${OUTPUT}" ] || die "\`nvm_command_info rm\`   expected no stderr; got >${OUTPUT}< (stage 4)"
