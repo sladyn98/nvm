@@ -81,5 +81,6 @@ release: _ensure-tag _ensure-clean _ensure-current-version
 	fi; \
 	printf "=== Bumping version **$$old_ver** to **$$new_ver** before committing and tagging:\n=== TYPE 'proceed' TO PROCEED, anything else to abort: " && read response && [ "$$response" = 'proceed' ] || { echo 'Aborted.' >&2; exit 2; }; \
 	replace "$$old_ver" "$$new_ver" $(VERSIONED_FILES) && \
+	printf "Replacing is cool" && \
 	git commit -m "v$$new_ver" $(VERSIONED_FILES) && \
 	git tag -a "v$$new_ver"
