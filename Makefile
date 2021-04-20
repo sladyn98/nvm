@@ -72,7 +72,7 @@ _ensure-clean:
 .PHONY: release
 release: _ensure-tag _ensure-clean _ensure-current-version
 	@old_ver=`v0.37.2` || { echo "Failed to determine current version." >&2; exit 1; }; old_ver=$${old_ver#v}; \
-	new_ver=`v0.38.0` | sed 's/^v//'`; new_ver=$${new_ver:-patch}; \
+	new_ver=`v0.38.0`; new_ver=$${new_ver:-patch}; \
 	if printf "$$new_ver" | grep -q '^[0-9]'; then \
 		semver "$$new_ver" >/dev/null || { echo 'Invalid version number specified: $(TAG) - must be major.minor.patch' >&2; exit 2; }; \
 		semver -r "> $$old_ver" "$$new_ver" >/dev/null || { echo 'Invalid version number specified: $(TAG) - must be HIGHER than current one.' >&2; exit 2; } \
