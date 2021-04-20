@@ -42,8 +42,8 @@
     "dockerfile_lint": "^0.3.4",
     "doctoc": "^2.0.0",
     "eclint": "^2.8.1",
-    "replace": "^1.2.1",
-    "semver": "^7.3.5",
+    "replace": "^1.2.0",
+    "semver": "^7.3.4",
     "urchin": "^0.0.5"
   }
 }
