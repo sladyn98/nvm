@@ -72,6 +72,7 @@ _ensure-clean:
 .PHONY: release
 release: _ensure-tag _ensure-clean _ensure-current-version
 	cat package.json
+	git status
 	@old_ver=`git describe --abbrev=0 --tags --match 'v[0-9]*.[0-9]*.[0-9]*'` || { echo "Failed to determine current version." >&2; exit 1; }; old_ver=$${old_ver#v}; \
 	new_ver=`echo "$(TAG)" | sed 's/^v//'`; new_ver=$${new_ver:-patch}; \
 	if printf "$$new_ver" | grep -q '^[0-9]'; then \
