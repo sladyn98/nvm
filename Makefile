@@ -81,7 +81,8 @@ release: _ensure-tag _ensure-clean _ensure-current-version
 	fi; \
 	printf "=== Bumping version **$$old_ver** to **$$new_ver** before committing and tagging:\n=== TYPE 'proceed' TO PROCEED, anything else to abort: " && read response && [ "$$response" = 'proceed' ] || { echo 'Aborted.' >&2; exit 2; }; \
 	cat package.json && \
+	cat README.md && \
 	git describe --abbrev=0 --tags --match 'v[0-9]*.[0-9]*.[0-9]*' && \ 
-	replace "$$old_ver" "$$new_ver" $(VERSIONED_FILES) && \
+	replace "$$old_ver" "$$ne_ver" $(VERSIONED_FILES) && \
 	git commit -m "v$$new_ver" $(VERSIONED_FILES) && \
 	git tag -a "v$$new_ver"
